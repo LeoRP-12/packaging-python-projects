@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gloves"
-version = "0.0.0"
+version = "0.1.0"
 description = "this project is a demonstration of a strategy for creating packages with Poetry, python-semantic-release and commitzen"
 authors = ["Leonardo Pires <leonardorifiol.p@gmail.com>"]
 readme = "README.md"
