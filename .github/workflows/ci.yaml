@@ -1,0 +1,25 @@
+  name: deploy release
+  on:
+    push:
+      branches:
+        - 'main'
+  jobs:
+    deploy_release:
+      name: Deploy Release
+      runs-on: ubuntu-latest
+      concurrency: release
+      steps:
+        - uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.8'
+        - name: Deploy Release
+          env:
+            PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+            PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            make deploy-release
